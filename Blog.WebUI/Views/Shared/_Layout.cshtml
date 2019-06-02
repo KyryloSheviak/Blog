@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title – приложение ASP.NET</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <header class="navbar navbar-fixed-top">
+        <img src="~/Images/s1200.png" class="navbar-brand" />
+        <h2>Sheviak</h2>
+    </header>
+    <div>
+        <main class="container" role="main">
+            <row class="main-body col-md-8">
+                @RenderBody()
+            </row>
+            <row class="right-sidebar col-md-4">
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link active" href='@Url.Action("Index","Home")'>News</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href='@Url.Action("ReviewsBook","Home")'>Reviews</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href='@Url.Action("Poll","Home")'>Poll</a>
+                    </li>
+                </ul>
+            </row>
+        </main>
+        <footer class="navbar-fixed-bottom">
+            <div class="container">
+                <div class="f-left">&copy; @DateTime.Now.Year – Шевяк Кирилл</div>
+                <div class="f-right"><a href="#top">Back to top</a></div>
+                <div class="both"></div>
+            </div>
+        </footer>
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

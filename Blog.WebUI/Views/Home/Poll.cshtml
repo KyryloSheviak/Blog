@@ -1,0 +1,70 @@
+﻿
+@{
+    ViewBag.Title = "Poll";
+}
+
+<h2>Poll</h2>
+
+<form method="get" action="">
+    <row>
+        <div class="form-group col-md-6">
+            <label for="exampleFormControlInput1">Email address</label>
+            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="test@google.com">
+        </div>
+        <div class="form-group col-md-6">
+            <label for="exampleFormControlSelect1">Выберете возраст</label>
+            @Html.DropDownList("list",
+                new SelectList(new string[] { "16-20", "21-30", "31-40", "41-50", "51+" }),
+                new { @class = "form-control" }
+            )
+        </div>
+    </row>
+
+    <row>
+        <div class="form-group col-md-6">
+            <label for="skills">Выберите то, что вам нравится</label>
+            @Html.ListBox("skills",
+                new MultiSelectList(new string[] { "качество", "скорость", "отзывчивость", "устойчивое развити", "хороший дизайн" }),
+                new { @class = "form-control" }
+                )
+        </div>
+        <div class="form-group col-md-6">
+            <label for="exampleFormControlTextarea1">Напишите свой отзыв</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+        </div>
+    </row>
+
+    <row>
+        <div class="form-group col-md-6">
+            <label>Оцените дизайн</label>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+                <label class="form-check-label" for="exampleRadios1">стоит доработать</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+                <label class="form-check-label" for="exampleRadios2">неплохо</label>
+            </div>
+            <div class="form-check disabled">
+                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3" disabled>
+                <label class="form-check-label" for="exampleRadios3">отличный</label>
+            </div>
+        </div>
+        <div class="form-group col-md-6">
+            <label>Выберете цвета</label>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                <label class="form-check-label" for="inlineCheckbox1">синий</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                <label class="form-check-label" for="inlineCheckbox2">черный</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                <label class="form-check-label" for="inlineCheckbox2">белый</label>
+            </div>
+        </div>
+    </row>
+    <button type="submit" class="btn btn-primary mb-2">Отправить</button>
+</form>

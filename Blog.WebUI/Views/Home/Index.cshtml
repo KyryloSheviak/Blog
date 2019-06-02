@@ -1,0 +1,26 @@
+﻿@model IEnumerable<Blog.Domain.Entities.News>
+@using Blog.Domain
+
+@{
+    ViewBag.Title = "News";
+}
+
+<h2>News</h2>
+
+<p>
+    <button type="button" class="btn btn-default mb-2">@Html.ActionLink("Create news", "CreateNews")</button>
+</p>
+
+@foreach (var item in Model)
+{
+    if (!item.IsDelete)
+    {
+        <div class="news">
+            <h4>@item.Title</h4>
+            <h5>@item.Date</h5>
+            <p>@item.Description</p>
+            <button type="button" class="btn btn-default mb-2">@Html.ActionLink("Edit", "Edit", "Home", new { id = item.Id, who = MyObject.News }, null)</button>
+            <button type="button" class="btn btn-default mb-2">@Html.ActionLink("Delete", "Delete", "Home", new { id = item.Id, who = MyObject.News }, null)</button>
+        </div>
+    }
+}
