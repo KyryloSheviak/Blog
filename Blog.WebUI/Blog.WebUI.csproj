@@ -133,10 +133,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\blogdb.mdf" />
-    <Content Include="App_Data\blogdb_log.ldf">
-      <DependentUpon>blogdb.mdf</DependentUpon>
-    </Content>
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -179,8 +175,10 @@
     <Content Include="Views\Home\CreateNews.cshtml" />
     <Content Include="Views\Home\CreateReviews.cshtml" />
     <Content Include="Views\Home\Poll.cshtml" />
+    <Content Include="Views\Home\More.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App_Data\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>

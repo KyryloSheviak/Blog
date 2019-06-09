@@ -48,19 +48,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DbOperations.cs" />
+    <Compile Include="DbOperations\DbOperations.cs" />
     <Compile Include="Entities\BaseEntity.cs" />
     <Compile Include="Entities\News.cs" />
     <Compile Include="Entities\Reviews.cs" />
+    <Compile Include="Entities\Tag.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\BlogContext.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="DbOperations\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

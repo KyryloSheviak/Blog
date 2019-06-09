@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Blog.Domain.Entities
 {
@@ -10,5 +6,6 @@ namespace Blog.Domain.Entities
     {
         public string Title { get; set; }
         public string Description { get; set; }
+        public virtual ICollection<Tag> Tags { get; set; }
     }
 }

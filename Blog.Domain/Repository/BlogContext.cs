@@ -9,12 +9,14 @@ namespace Blog.Domain.Repository
     {
         public IDbSet<News> News { get; set; }
         public IDbSet<Reviews> Reviews { get; set; } 
+        public IDbSet<Tag> Tags { get; set; } 
 
+        public BlogContext() { }
         public BlogContext(string nameOrConnectionString) : base(nameOrConnectionString) { }
         static BlogContext()
         {
             Database.SetInitializer(new CreateDatabaseIfNotExists<BlogContext>());
-            //Database.SetInitializer(new BlogContextInitializer());
+            Database.SetInitializer(new BlogContextInitializer());
         }
     }
 
@@ -28,23 +30,51 @@ namespace Blog.Domain.Repository
                 {
                     Title = "А тут моя супер новость",
                     Description = "Я сделал ASP.NET приложение и оно работает!! Ураааа !!!",
-                    Date = DateTime.Parse("2019-06-01")
+                    Date = DateTime.Parse("2019-06-01"),
+                    Tags = new List<Tag>
+                    {
+                        new Tag { Name = "abds", NewsId = 1 },
+                        new Tag { Name = "abds", NewsId = 3 },
+                    }
                 },
                 new News
-                {
+                {   
                     Title = "Вторая новость",
                     Description = "Какая-то новость, но не знаю какая",
-                    Date = DateTime.Parse("2019-06-02")
+                    Date = DateTime.Parse("2019-06-02"),
+                    Tags = new List<Tag>
+                    {
+                        new Tag { Name = "abds", NewsId = 2 },
+                        new Tag { Name = "abds", NewsId = 4 },
+                    }
                 },
                 new News
                 {
                     Title = "Третья новость",
                     Description = "тут-тут",
-                    Date = DateTime.Parse("2019-06-03")
+                    Date = DateTime.Parse("2019-06-03"),
+                    Tags = new List<Tag>
+                    {
+                        new Tag { Name = "abds", NewsId = 5 },
+                        new Tag { Name = "sd", NewsId = 6 },
+                    }
                 }
             };
             news.ForEach(n => context.News.Add(n));
             context.SaveChanges();
+
+            //var tag = new List<Tag>
+            //{
+            //    new Tag { Name = "abds"},
+            //    new Tag { Name = "second"},
+            //    new Tag { Name = "first"},
+            //    new Tag { Name = "test"},
+            //    new Tag { Name = "more"},
+            //    new Tag { Name = "vsia"},
+            //    new Tag { Name = "af"},
+            //};
+            //tag.ForEach(t => context.Tags.Add(t));
+            //context.SaveChanges();
 
             var reviews = new List<Reviews>
             {
@@ -69,6 +99,7 @@ namespace Blog.Domain.Repository
             };
             reviews.ForEach(r => context.Reviews.Add(r));
             context.SaveChanges();
+            
         }
     }       
 }

@@ -10,10 +10,18 @@ namespace Blog.WebUI.Controllers
     {
         private BlogContext blogContext = new BlogContext("BlogContext");
         private DbOperations dbOperations = new DbOperations();
-
+        private const int NUM = 10;
         public ActionResult Index()
         {
-            return View(blogContext.News.OrderByDescending(n => n.Id));
+            var news = blogContext.News.Where(p => !p.IsDelete).OrderByDescending(n => n.Id);
+            foreach (var item in news)
+            {
+                if (item.Description.Length > NUM)
+                {
+                    item.Description = item.Description.Remove(NUM, item.Description.Length - NUM) + "...";
+                }
+            }
+            return View(news);
         }
 
         public ActionResult ReviewsBook()
@@ -25,7 +33,7 @@ namespace Blog.WebUI.Controllers
         {
             return View();
         }
-
+         
         // =================================================================
 
         public ActionResult Delete(int? id, MyObject who)
@@ -108,6 +116,24 @@ namespace Blog.WebUI.Controllers
         {
             dbOperations.Edit(blogContext, MyObject.Reviews, reviews);
             return View("ReviewsBook", blogContext.Reviews.OrderByDescending(n => n.Id));
+        }
+
+        // =================================================================
+
+        public ActionResult More (int? id, MyObject who)
+        {
+            if (id == null)
+            {
+                return HttpNotFound();
+            }
+
+            var obj = dbOperations.GetObject(blogContext, id, who);
+            if (obj == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View("More", obj);
         }
     }
 }

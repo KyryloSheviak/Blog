@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using Blog.Domain.Entities
+
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
@@ -30,6 +32,16 @@
                         <a class="nav-link" href='@Url.Action("Poll","Home")'>Poll</a>
                     </li>
                 </ul>
+                @if (Request.AppRelativeCurrentExecutionFilePath == "~/")
+                {
+                    @Html.Label("Do you like this web site?")
+                    <br />
+                    <input type="radio" id="yes" name="contact" value="yes">
+                    <label for="yes">Yes</label>
+                    <br />
+                    <input type="radio" id="no" name="contact" value="no">
+                    <label for="no">No</label>
+                }
             </row>
         </main>
         <footer class="navbar-fixed-bottom">
